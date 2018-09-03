@@ -1,0 +1,15 @@
+{
+  "name": "udemy-skypebot-nodejs",
+  "version": "1.0.0",
+  "description": "Udemy SkypeBot Nodejs Only",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "botbuilder": "^3.15.0",
+    "express": "^4.16.3"
+  }
+}
