@@ -34,6 +34,10 @@ botListener.dialog('/', function(session)
     }
 });
 
+app.get('/', function(req, res){
+    app.send('Currency Convertor Bot Listening...');
+})
+
 app.listen(listenPort, function(){
     console.log('Bot listening at '+listenPort)
 })
