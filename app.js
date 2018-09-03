@@ -20,7 +20,7 @@ var botListener = new botbuilder.UniversalBot(botService);
 
 //connect botservice to app
 
-app.post('botservice/msg', botService.listen());
+app.post('/botservice/msg', botService.listen());
 
 botListener.dialog('/', function(session)
 {
