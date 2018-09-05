@@ -1,4 +1,4 @@
-import { isNumber } from 'util';
+//import { isNumber } from 'util';
 
 //calling microsoft botbuilder
 var botbuilder = require('botbuilder');
@@ -26,7 +26,7 @@ var bot = new botbuilder.UniversalBot(botConnector).set('storage',inMemoryStorag
 //connect botservice to app
 app.post('/botservice/msg', botConnector.listen());
 
-CurrencyConvertor = function(session){
+CurrencyConvertor = function (session){
 
     userMsg = session.message.text;
     var msg;
@@ -38,15 +38,11 @@ CurrencyConvertor = function(session){
         msg = userMsg;
     }
 
-    var msgFrom = session.message.user.name;
-
     if(msg === 'hi' || msg === 'hello' || msg === 'hey')
     {
-        session.send('Hello ' + msgFrom + ', I am your Currency converter bot. Let\'s talk money');
+        session.send('Hello , I am your Currency converter bot. Let\'s talk money');
     }
 }
-
-
 
 
 bot.dialog('/', function(session)
