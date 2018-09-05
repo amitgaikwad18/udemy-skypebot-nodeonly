@@ -38,9 +38,11 @@ CurrencyConvertor = function (session){
         msg = userMsg;
     }
 
+    Console.log(msg);
+
     if(msg === 'hi' || msg === 'hello' || msg === 'hey')
     {
-        session.send('Hello , I am your Currency converter bot. Let\'s talk money');
+        session.send('Hello , I am your Currency converter bot. Let us talk money');
     }
 }
 
