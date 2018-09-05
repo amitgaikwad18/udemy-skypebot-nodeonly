@@ -47,6 +47,8 @@ CurrencyConvertor = function(session){
 }
 
 
+
+
 bot.dialog('/', function(session)
 {
     // var skypeMessage = session.message.text.toLowerCase();
