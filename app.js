@@ -1,7 +1,9 @@
+import { isNumber } from 'util';
+
 //calling microsoft botbuilder
 var botbuilder = require('botbuilder');
-//var botbuilder_mongo = require('botbuilder-mongodb')
 
+// setting up InMemoryStorage
 var inMemoryStorage = new botbuilder.MemoryBotStorage();
 
 //calling express
@@ -18,39 +20,50 @@ var botConnector = new botbuilder.ChatConnector(
         appPassword: 'shhqgPHHC83{psGDW123(:*'
     });
 
-    // const mongoOptions = {
-    //     DatabaseName: "",
-    //     collectionName: "",
-    //     mongoIp: "",
-    //     mongoPort: "",
-    //     username: "",
-    //     password: ""
-    // }
-
-//mongoDbStorage = botbuilder_mongo.GetMongoDBLayer(mongoOptions);
 // Bot Service listener
 var bot = new botbuilder.UniversalBot(botConnector).set('storage',inMemoryStorage);
 
 //connect botservice to app
-
 app.post('/botservice/msg', botConnector.listen());
+
+CurrencyConvertor = function(session){
+
+    userMsg = session.message.text;
+    var msg;
+
+    if(!isNumber(userMsg)){
+        msg = userMsg.toLowerCase;
+    }
+    else {
+        msg = userMsg;
+    }
+
+    var msgFrom = session.message.user.name;
+
+    if(msg === 'hi' || msg === 'hello' || msg === 'hey')
+    {
+        session.send('Hello ' + msgFrom + ', I am your Currency converter bot. Let\'s talk money');
+    }
+}
+
 
 bot.dialog('/', function(session)
 {
-    var skypeMessage = session.message.text.toLowerCase();
-    if(skypeMessage === 'hi' || skypeMessage === 'hello' || skypeMessage === 'hey')
-    {
-        session.send('Hello there, I am your Currency convertor bot. Let\'s talk money');
-    }
-    else{
-        session.send('Me no understand');
-    }
+    // var skypeMessage = session.message.text.toLowerCase();
+    // if(skypeMessage === 'hi' || skypeMessage === 'hello' || skypeMessage === 'hey')
+    // {
+    //     session.send('Hello there, I am your Currency converter bot. Let\'s talk money');
+    // }
+    // else{
+    //     session.send('Me no understand');
+    // }
+    CurrencyConvertor(session);
 });
 
 app.get('/', function(req, res){
-    res.send('Currency Convertor Bot Listening...');
+    res.send('Currency Converter Bot Listening...');
 })
 
 app.listen(listenPort, function(){
-    console.log('Bot listening at '+listenPort)
+    console.log('Bot listening at ' + listenPort)
 })
