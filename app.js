@@ -79,7 +79,7 @@ CurrencyConvertor = function (session) {
     }
 
     if(!currencyObtained && !countryObtained){
-        session.send('Please enter country and currency');
+        session.send('Please currency in USD convert');
     }
 
     if(currencyObtained && countryObtained){
@@ -100,9 +100,9 @@ CurrencyConvertor = function (session) {
                 session.send('Canadian dollar equivalent of provided dollar value is '+ convertedValue);
                 break;
 
-            default:
-                //session.send('Missing country');
-                break;
+            // default:
+            //     //session.send('Missing country');
+            //     break;
 
         }
     }
