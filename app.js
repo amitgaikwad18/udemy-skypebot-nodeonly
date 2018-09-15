@@ -109,7 +109,7 @@ CurrencyConvertor = function (session) {
 
 bot.dialog('/', function(session)
 {
-    session.send('Hi!, Welcome to Currency Conversion');
+    //session.send('Hi!, Welcome to Currency Conversion');
 
     // var skypeMessage = session.message.text.toLowerCase();
     // if(skypeMessage === 'hi' || skypeMessage === 'hello' || skypeMessage === 'hey')
