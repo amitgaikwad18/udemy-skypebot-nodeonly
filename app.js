@@ -11,6 +11,9 @@ var express = require('express');
 
 var app = express();
 
+var currencyObtained = false;
+var countryObtained = false;
+
 var listenPort = process.env.PORT || 3000;
 
 // Connect to microsoft bot service
@@ -33,8 +36,7 @@ CurrencyConvertor = function (session) {
 
     console.log('user message >>> '+userMsg);
 
-    var currencyObtained = false;
-    var countryObtained = false;
+    
     var dollarValue = 0.0;
     var country;
 
@@ -57,13 +59,13 @@ CurrencyConvertor = function (session) {
 
         currencyObtained = true;
         dollarValue = msg;
-        session.send('You provided dollar value = '+dollarValue);
+        //session.send('You provided dollar value = '+dollarValue);
 
     }else if(msg === 'canada' || msg === 'china' || msg === 'india'){
 
         countryObtained = true;
         country = msg;
-        session.send('You provided country = '+country);
+       // session.send('You provided country = '+country);
     }
 
     if(!currencyObtained && countryObtained){
