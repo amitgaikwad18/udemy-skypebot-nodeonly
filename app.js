@@ -42,11 +42,11 @@ CurrencyConvertor = function (session) {
 
     userName = session.message.user.name;
 
-    console.log('Is Numeric? >>> ' + !isNaN(userMsg));
+    console.log('Is Numeric? >>> ' + isNumeric(userMsg));
     console.log('Is currencyObtained? >>> ' + currencyObtained);
     console.log('Is countryObtained? >>> ' + countryObtained);
 
-    if(!isNaN(userMsg)){
+    if(isNumeric(userMsg)){
         msg = userMsg;
     }
     else {
@@ -57,7 +57,7 @@ CurrencyConvertor = function (session) {
     {
         session.send('Hello '+userName +', I am your Currency converter bot. Let us talk money');
     }
-    else if (!isNaN(msg)){
+    else if (isNumeric(msg)){
 
         currencyObtained = true;
         dollarValue = msg;
@@ -67,7 +67,7 @@ CurrencyConvertor = function (session) {
 
         countryObtained = true;
         country = msg;
-       // session.send('You provided country = '+country);
+        //session.send('You provided country = '+country);
     }
 
     if(!currencyObtained && countryObtained){
@@ -106,6 +106,10 @@ CurrencyConvertor = function (session) {
 
         }
     }
+}
+
+function isNumeric(number){
+    return !isNaN(parseFloat(number)) || isFinite(number);
 }
 
 
