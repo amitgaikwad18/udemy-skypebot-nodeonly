@@ -151,7 +151,17 @@ bot.dialog('/sayHi', function(session){
 
 });
 
-bot.beginDialog('/sayHi');
+bot.beginDialog({
+    bot: {
+        id: "05af2f2c-a366-4e99-94a8-647d988335f6",
+        name: "Currency Convertor Bot"
+    },
+    channelId: "web-chat",
+    user: {
+        id: session.message.user.id,
+        name: session.message.user.name
+    }
+},'/sayHi');
 
 bot.dialog('/', intents);
 
