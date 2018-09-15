@@ -143,8 +143,6 @@ function isNumeric(number){
 //     CurrencyConvertor(session);
 // });
 
-
-bot.beginDialog()
 bot.dialog('/', intents);
 
 intents.matches('Default Welcome Intent', function(session, args){
