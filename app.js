@@ -40,7 +40,9 @@ CurrencyConvertor = function (session) {
 
     userName = session.message.user.name;
 
-    if(typeof userMsg === 'number'){
+    console.log('Is Numeric? >>> ' + isNaN(userMsg));
+
+    if(isNaN(userMsg)){
         msg = userMsg;
     }
     else {
@@ -51,7 +53,7 @@ CurrencyConvertor = function (session) {
     {
         session.send('Hello '+userName +', I am your Currency converter bot. Let us talk money');
     }
-    else if (typeof msg === 'number'){
+    else if (isNaN(msg)){
 
         currencyObtained = true;
         dollarValue = msg;
