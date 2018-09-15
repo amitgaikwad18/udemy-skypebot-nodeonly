@@ -24,6 +24,8 @@ var app = express();
 var currencyObtained = false;
 var countryObtained = false;
 var dollarValue = 0.0;
+var userName;
+var userId;
 
 var listenPort = process.env.PORT || 3000;
 
@@ -146,6 +148,7 @@ function isNumeric(number){
 bot.dialog('/sayHi', function(session){
 
     userName = session.message.user.name;
+    userId = session.message.user.id;
 
     session.send('Hello '+ userName +', I am your currency convertor bot');
 
@@ -158,8 +161,8 @@ bot.beginDialog({
     },
     channelId: "web-chat",
     user: {
-        id: session.message.user.id,
-        name: session.message.user.name
+        id: userId,
+        name: userName
     }
 },'/sayHi');
 
