@@ -94,12 +94,12 @@ CurrencyConvertor = function (session) {
                 break;
             
             case 'canada':
-                convertedValue = dollarValue * 65;
+                convertedValue = dollarValue * 1.5;
                 session.send('Canadian dollar equivalent of provided dollar value is '+ convertedValue);
                 break;
 
             default:
-                session.send('Missing country');
+                //session.send('Missing country');
                 break;
 
         }
@@ -109,6 +109,7 @@ CurrencyConvertor = function (session) {
 
 bot.dialog('/', function(session)
 {
+    session.send('Hi!, Welcome to Currency Conversion');
 
     // var skypeMessage = session.message.text.toLowerCase();
     // if(skypeMessage === 'hi' || skypeMessage === 'hello' || skypeMessage === 'hey')
