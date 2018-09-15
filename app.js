@@ -145,10 +145,10 @@ function isNumeric(number){
 
 bot.dialog('/', intents);
 
-intents.matches('ConvertCurrency', function(session){
+intents.matches('ConvertCurrency', function(session, args){
 
-    var currency = botbuilder.EntityRecognizer.findEntity(arguments.entities, '@sys.unit-currency');
-    var currencyName = botbuilder.EntityRecognizer.findEntity(arguments.entities, '@sys.currency-name');
+    var currency = botbuilder.EntityRecognizer.findEntity(args.entities, 'unit-currency');
+    var currencyName = botbuilder.EntityRecognizer.findEntity(args.entities, 'currency-name');
 
     session.send('Intent >>> ConvertCurrency, '+ ' Currency >>> ' + currency + ' Currency Name >>> '+ currencyName);
 
