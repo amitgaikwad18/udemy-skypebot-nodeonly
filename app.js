@@ -143,11 +143,13 @@ function isNumeric(number){
 //     CurrencyConvertor(session);
 // });
 
+
+bot.beginDialog()
 bot.dialog('/', intents);
 
-intents.matches('smalltalk.greetings', function(session, args){
+intents.matches('Default Welcome Intent', function(session, args){
 
-    console.log('Intent found smalltalk.greetings');
+    console.log('Intent found Default Welcome Intent');
 
     var fulfillment = botbuilder.EntityRecognizer.findEntity(args.entities, 'fulfillment');
 
