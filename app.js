@@ -150,13 +150,16 @@ intents.matches('ConvertCurrency', function(session, args){
     var currency = botbuilder.EntityRecognizer.findEntity(args.entities, '@sys.unit-currency');
     var currencyName = botbuilder.EntityRecognizer.findEntity(args.entities, '@sys.currency-name');
 
-    if(currency && currencyName){
-        var message = new String('Intent =  ConvertCurrency');
-        message.concat(' Currency = '+currency);
-        message.concat(' Currency Name = '+ currencyName);
+    session.send('Intent >>> ConvertCurrency, '+ ' Currency >>> ' + currency + ' Currency Name >>> '+ currencyName);
+    
 
-        session.send(message);
-    }
+    // if(currency && currencyName){
+    //     var message = new String('Intent =  ConvertCurrency');
+    //     message.concat(' Currency = '+currency);
+    //     message.concat(' Currency Name = '+ currencyName);
+
+    //     session.send(message);
+    // }
     
 
 });
