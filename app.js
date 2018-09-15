@@ -42,7 +42,7 @@ CurrencyConvertor = function (session) {
 
     console.log('Is Numeric? >>> ' + isNaN(userMsg));
 
-    if(isNaN(userMsg)){
+    if(!isNaN(userMsg)){
         msg = userMsg;
     }
     else {
@@ -53,7 +53,7 @@ CurrencyConvertor = function (session) {
     {
         session.send('Hello '+userName +', I am your Currency converter bot. Let us talk money');
     }
-    else if (isNaN(msg)){
+    else if (!isNaN(msg)){
 
         currencyObtained = true;
         dollarValue = msg;
