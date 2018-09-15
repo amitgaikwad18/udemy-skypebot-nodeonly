@@ -65,6 +65,43 @@ CurrencyConvertor = function (session) {
         country = msg;
         session.send('You provided country = '+country);
     }
+
+    if(!currencyObtained && countryObtained){
+        session.send('Please enter currency in dollars');
+    }
+
+    if(currencyObtained && !countryObtained){
+        session.send('Please enter country');
+    }
+
+    if(!currencyObtained && !countryObtained){
+        session.send('Please enter country and currency');
+    }
+
+    if(currencyObtained && countryObtained){
+        currencyObtained = false;
+        countryObtained = false;
+
+        var convertedValue = 0.0;
+
+        switch(country){
+
+            case 'india':
+                convertedValue = dollarValue * 65;
+                session.send('Indian Rupees equivalent of provided dollar value is '+ convertedValue);
+                break;
+            
+            case 'canada':
+                convertedValue = dollarValue * 65;
+                session.send('Canadian dollar equivalent of provided dollar value is '+ convertedValue);
+                break;
+
+            default:
+                session.send('Missing country');
+                break;
+
+        }
+    }
 }
 
 
