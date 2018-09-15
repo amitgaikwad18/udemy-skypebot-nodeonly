@@ -143,6 +143,16 @@ function isNumeric(number){
 //     CurrencyConvertor(session);
 // });
 
+bot.dialog('/sayHi', function(session){
+
+    userName = session.message.user.name;
+
+    session.send('Hello '+ userName +', I am your currency convertor bot');
+
+});
+
+bot.beginDialog('/sayHi');
+
 bot.dialog('/', intents);
 
 intents.matches('Default Welcome Intent', function(session, args){
@@ -179,16 +189,6 @@ intents.matches('ConvertCurrency', function(session, args){
     }
 
     session.send('Intent >>> ConvertCurrency, '+ ' Currency >>> ' + currencyAmtVal + ' Currency Name >>> '+ currencyNameVal);
-
-
-    // if(currency && currencyName){
-    //     var message = new String('Intent =  ConvertCurrency');
-    //     message.concat(' Currency = '+currency);
-    //     message.concat(' Currency Name = '+ currencyName);
-
-    //     session.send(message);
-    // }
-    
 
 });
 
