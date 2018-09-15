@@ -13,6 +13,7 @@ var app = express();
 
 var currencyObtained = false;
 var countryObtained = false;
+var dollarValue = 0.0;
 
 var listenPort = process.env.PORT || 3000;
 
@@ -37,7 +38,7 @@ CurrencyConvertor = function (session) {
     console.log('user message >>> '+userMsg);
 
     
-    var dollarValue = 0.0;
+    //var dollarValue = 0.0;
     var country;
 
     userName = session.message.user.name;
