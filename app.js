@@ -2,6 +2,7 @@
 
 //calling microsoft botbuilder
 var botbuilder = require('botbuilder');
+var isNumber = require('util');
 
 // setting up InMemoryStorage
 var inMemoryStorage = new botbuilder.MemoryBotStorage();
@@ -31,6 +32,13 @@ CurrencyConvertor = function (session){
     userMsg = session.message.text;
     var msg;
 
+    var currencyObtained = false;
+    var countryObtained = false;
+    var dollarValue = 0.0;
+    var country;
+
+    userName = session.message.user.name;
+
     if(!isNumber(userMsg)){
         msg = userMsg.toLowerCase;
     }
@@ -42,7 +50,19 @@ CurrencyConvertor = function (session){
 
     if(msg === 'hi' || msg === 'hello' || msg === 'hey')
     {
-        session.send('Hello , I am your Currency converter bot. Let us talk money');
+        session.send('Hello '+userName +', I am your Currency converter bot. Let us talk money');
+    }
+    else if (isNumber(msg)){
+
+        currencyObtained = true;
+        dollarValue = msg;
+        session.send('You provided dollar value = '+dollarValue);
+
+    }else if(msg === 'canada' || msg === 'china' || msg === 'india'){
+
+        countryObtained = true;
+        country = msg;
+        session.send('You provided country = '+country);
     }
 }
 
