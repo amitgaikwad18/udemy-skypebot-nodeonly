@@ -145,13 +145,25 @@ function isNumeric(number){
 
 bot.dialog('/', intents);
 
+intents.matches('smalltalk.greetings', function(session, args){
+
+    var fulfillment = botbuilder.EntityRecognizer.findEntity(args.entities, 'fulfillment');
+
+    if(fulfillment){
+        var speech = fulfillment.entity;
+        session.send(speech);
+    }else{
+        session.send('Sorry, I dont understand that.');
+    }
+});
+
 intents.matches('ConvertCurrency', function(session, args){
 
     var currencyVal = '';
     var currencyNameVal = '';
 
-    var currency = botbuilder.EntityRecognizer.findEntity(args.intents.entities, '@sys.unit-currency');
-    var currencyName = botbuilder.EntityRecognizer.findEntity(args.intents.entities, '@sys.currency-name');
+    var currency = botbuilder.EntityRecognizer.findEntity(args.entities, '@sys.unit-currency');
+    var currencyName = botbuilder.EntityRecognizer.findEntity(args.entities, '@sys.currency-name');
 
     if(currency){
         currencyVal = currency.entity;
