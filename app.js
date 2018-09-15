@@ -162,8 +162,8 @@ intents.matches('ConvertCurrency', function(session, args){
     var currencyVal = '';
     var currencyNameVal = '';
 
-    var currency = botbuilder.EntityRecognizer.findEntity(args.entities, '@sys.unit-currency');
-    var currencyName = botbuilder.EntityRecognizer.findEntity(args.entities, '@sys.currency-name');
+    var currency = botbuilder.EntityRecognizer.findEntity(args.entities, 'unit-currency');
+    var currencyName = botbuilder.EntityRecognizer.findEntity(args.entities, 'currency-name');
 
     if(currency){
         currencyVal = currency.entity;
