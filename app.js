@@ -156,7 +156,7 @@ bot.dialog('/sayHi', function(session){
 
 bot.on('BotAddedToConversation', function(message){
 
-    bot.beginDialog(message, '/sayHi');
+    bot.beginDialog(message.from.address, '/sayHi');
 });
 
 // bot.beginDialog({
