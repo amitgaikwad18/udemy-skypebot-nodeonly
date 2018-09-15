@@ -2,9 +2,19 @@
 
 //calling microsoft botbuilder
 var botbuilder = require('botbuilder');
+var dialogFlowRecognizer = require('api-ai-recognizer');
 
 // setting up InMemoryStorage
 var inMemoryStorage = new botbuilder.MemoryBotStorage();
+
+//calling api-ai recognizer
+var recognizer = new dialogFlowRecognizer('e5b3ab97e3814a25971ca4839f9833ed');
+
+//Build Intents dialogs
+
+var intents = new botbuilder.IntentDialog({
+    recognizers: [recognizer]
+});
 
 //calling express
 var express = require('express'); 
@@ -118,19 +128,31 @@ function isNumeric(number){
 }
 
 
-bot.dialog('/', function(session)
-{
-    //session.send('Hi!, Welcome to Currency Conversion');
+// bot.dialog('/', function(session)
+// {
+//     //session.send('Hi!, Welcome to Currency Conversion');
 
-    // var skypeMessage = session.message.text.toLowerCase();
-    // if(skypeMessage === 'hi' || skypeMessage === 'hello' || skypeMessage === 'hey')
-    // {
-    //     session.send('Hello there, I am your Currency converter bot. Let\'s talk money');
-    // }
-    // else{
-    //     session.send('Me no understand');
-    // }
-    CurrencyConvertor(session);
+//     // var skypeMessage = session.message.text.toLowerCase();
+//     // if(skypeMessage === 'hi' || skypeMessage === 'hello' || skypeMessage === 'hey')
+//     // {
+//     //     session.send('Hello there, I am your Currency converter bot. Let\'s talk money');
+//     // }
+//     // else{
+//     //     session.send('Me no understand');
+//     // }
+//     CurrencyConvertor(session);
+// });
+
+bot.dialog('/', intents);
+
+intents.matches('ConvertCurrency', function(session){
+
+        session.send('Intent Identified ConvertCurrency');
+
+});
+
+intents.onDefault(function (session){
+    session.send('Sorry ... can you please rephrase?');
 });
 
 app.get('/', function(req, res){
