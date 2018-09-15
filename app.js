@@ -88,6 +88,8 @@ CurrencyConvertor = function (session) {
 
         var convertedValue = 0.0;
 
+        console.log('dollarValue >>> ' + dollarValue);
+
         switch(country){
 
             case 'india':
