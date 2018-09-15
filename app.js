@@ -147,6 +147,8 @@ bot.dialog('/', intents);
 
 intents.matches('smalltalk.greetings', function(session, args){
 
+    console.log('Intent found smalltalk.greetings');
+
     var fulfillment = botbuilder.EntityRecognizer.findEntity(args.entities, 'fulfillment');
 
     if(fulfillment){
