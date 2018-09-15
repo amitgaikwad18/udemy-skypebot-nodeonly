@@ -42,7 +42,7 @@ CurrencyConvertor = function (session) {
 
     userName = session.message.user.name;
 
-    console.log('Is Numeric? >>> ' + isNaN(userMsg));
+    console.log('Is Numeric? >>> ' + !isNaN(userMsg));
 
     if(!isNaN(userMsg)){
         msg = userMsg;
