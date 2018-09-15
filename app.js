@@ -39,11 +39,11 @@ CurrencyConvertor = function (session){
 
     userName = session.message.user.name;
 
-    if(!isNumber(userMsg)){
-        msg = userMsg.toLowerCase;
+    if(typeof userMsg === 'number'){
+        msg = userMsg;
     }
     else {
-        msg = userMsg;
+        msg = userMsg.toLowerCase;
     }
 
     Console.log(msg);
@@ -52,7 +52,7 @@ CurrencyConvertor = function (session){
     {
         session.send('Hello '+userName +', I am your Currency converter bot. Let us talk money');
     }
-    else if (isNumber(msg)){
+    else if (typeof msg === 'number'){
 
         currencyObtained = true;
         dollarValue = msg;
