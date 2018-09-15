@@ -46,8 +46,6 @@ CurrencyConvertor = function (session){
         msg = userMsg.toLowerCase;
     }
 
-    Console.log(msg);
-
     if(msg === 'hi' || msg === 'hello' || msg === 'hey')
     {
         session.send('Hello '+userName +', I am your Currency converter bot. Let us talk money');
