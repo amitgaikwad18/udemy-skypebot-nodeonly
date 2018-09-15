@@ -38,7 +38,7 @@ CurrencyConvertor = function (session) {
     var dollarValue = 0.0;
     var country;
 
-    // userName = session.message.user.name;
+    userName = session.message.user.name;
 
     if(typeof userMsg === 'number'){
         msg = userMsg;
