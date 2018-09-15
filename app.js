@@ -69,6 +69,8 @@ CurrencyConvertor = function (session) {
         countryObtained = true;
         country = msg;
         //session.send('You provided country = '+country);
+    }else{
+        session.send('Sorry I do not understand that. I can only help in converting currency.');
     }
 
     if(!currencyObtained && countryObtained){
