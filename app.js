@@ -161,10 +161,6 @@ intents.matches('ConvertCurrency', function(session, args){
 
 });
 
-intents.matches('smalltalk.greetings', function(session, args){
-    var fulfillment = botbuilder.EntityRecognizer.findEntity(args.entities, 'fulfillment')
-});
-
 intents.onDefault(function (session){
     session.send('Sorry ... can you please rephrase?');
 });
