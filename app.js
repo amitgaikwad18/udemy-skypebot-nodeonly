@@ -154,17 +154,22 @@ bot.dialog('/sayHi', function(session){
 
 });
 
-bot.beginDialog({
-    bot: {
-        id: "05af2f2c-a366-4e99-94a8-647d988335f6",
-        name: "Currency Convertor Bot"
-    },
-    channelId: "web-chat",
-    user: {
-        id: userId,
-        name: userName
-    }
-},'/sayHi');
+bot.on('BotAddedToConversation', function(message){
+
+    bot.beginDialog(message, '/sayHi');
+});
+
+// bot.beginDialog({
+//     bot: {
+//         id: "05af2f2c-a366-4e99-94a8-647d988335f6",
+//         name: "Currency Convertor Bot"
+//     },
+//     channelId: "web-chat",
+//     user: {
+//         id: userId,
+//         name: userName
+//     }
+// },'sayHi');
 
 bot.dialog('/', intents);
 
