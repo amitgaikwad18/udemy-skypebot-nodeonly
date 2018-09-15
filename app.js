@@ -65,9 +65,6 @@ CurrencyConvertor = function (session) {
     }
 }
 
-ConverCurrency == function(session){
-    
-}
 
 bot.dialog('/', function(session)
 {
