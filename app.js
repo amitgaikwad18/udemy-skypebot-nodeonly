@@ -154,9 +154,11 @@ bot.dialog('/sayHi', function(session){
 
 });
 
-bot.on('BotAddedToConversation', function(message){
+bot.on('event', function(message){
 
-    bot.beginDialog(message.from.address, '/sayHi');
+    if(message.name == 'requestWelcomeDialog'){
+        bot.beginDialog(message.address,'/sayHi');
+    }
 });
 
 // bot.beginDialog({
