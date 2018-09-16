@@ -154,26 +154,24 @@ bot.dialog('/sayHi', function(session){
 
 });
 
-bot.on('event', function(message){
-
-    if(message.name == 'requestWelcomeDialog'){
-        bot.beginDialog(message.address,'/sayHi');
-    }
-});
-
-// bot.beginDialog({
-//     bot: {
-//         id: "05af2f2c-a366-4e99-94a8-647d988335f6",
-//         name: "Currency Convertor Bot"
-//     },
-//     channelId: "web-chat",
-//     user: {
-//         id: userId,
-//         name: userName
-//     }
-// },'sayHi');
+// bot.dialog('/welcome', [
+//     (session, args, next) => {
+//         session.send('Welcome! I am your currecy convertor bot');
+//         next();
+//     } 
+// ]);
 
 bot.dialog('/', intents);
+
+// intents.matches('Initiate Chat', function(session){
+//     session.beginDialog('/sayHi');
+// });
+
+// var initiateChatTrigger = new botbuilder.Message()
+// .text('Initiate Chat', )
+
+
+// bot.receive(initiateChatTrigger.toMessage());
 
 intents.matches('Default Welcome Intent', function(session, args){
 
@@ -213,7 +211,8 @@ intents.matches('ConvertCurrency', function(session, args){
 });
 
 intents.onDefault(function (session){
-    session.send('Sorry ... can you please rephrase?');
+  //session.send('Sorry ... can you please rephrase?');
+    botbuilder.Prompts.choice(session, 'Please select from following',['convert to inr','convert to JPY']) 
 });
 
 app.get('/', function(req, res){
