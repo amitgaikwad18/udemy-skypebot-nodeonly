@@ -145,13 +145,21 @@ function isNumeric(number){
 //     CurrencyConvertor(session);
 // });
 
+// Send welcome when conversation with bot is started, by initiating the root dialog
+bot.on('conversationUpdate', function (message) {
+    if (message.membersAdded) {
+        message.membersAdded.forEach(function (identity) {
+            if (identity.id === message.address.bot.id) {
+                bot.beginDialog(message.address, '/sayHi');
+            }
+        });
+    }
+});
+
 bot.dialog('/sayHi', function(session){
-
     userName = session.message.user.name;
-    userId = session.message.user.id;
 
-    session.send('Hello '+ userName +', I am your currency convertor bot');
-
+    session.send('Hi '+userName+', I am your Currency Convertor Bot');
 });
 
 // bot.dialog('/welcome', [
@@ -211,8 +219,8 @@ intents.matches('ConvertCurrency', function(session, args){
 });
 
 intents.onDefault(function (session){
-  //session.send('Sorry ... can you please rephrase?');
-    botbuilder.Prompts.choice(session, 'Please select from following',['convert to inr','convert to JPY']) 
+    session.send('Sorry ... can you please rephrase?');
+    //botbuilder.Prompts.choice(session, 'Please select from following',['convert to inr','convert to JPY']) 
 });
 
 app.get('/', function(req, res){
