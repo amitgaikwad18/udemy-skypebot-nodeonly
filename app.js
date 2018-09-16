@@ -159,7 +159,7 @@ bot.on('conversationUpdate', function (message) {
 bot.dialog('/sayHi', function(session){
     userName = session.message.user.name;
 
-    session.send('Hi '+userName+', I am your Currency Convertor Bot');
+    session.send('Hi, I am your Currency Convertor Bot');
 });
 
 // bot.dialog('/welcome', [
